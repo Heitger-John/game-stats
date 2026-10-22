@@ -254,6 +254,29 @@ public class MapGameStatsCalculatorTest {
     assertEquals("Nupur", actual);
   }
 
+  @Test
+  public void highestScoreWithTwoHighestScoreOfTwoPeople()
+  {
+    // Arrange
+    String scoreData = "Nupur 10\n"
+        + "Baya 30\n"
+        + "Xinting 25\n"
+        + "Nupur 40\n"
+        + "Baya 50\n"
+        + "Nupur 60\n"
+        + "Baya 60\n"
+        + "Nupur 30\n";
+    GameStatsCalculator calculator = new MapGameStatsCalculator(new Scanner(scoreData));
+    
+    // Act
+    String actual = calculator.highestScorer();
+
+   
+    // Assert
+    assertEquals("Baya", actual);
+
+  }
+
   // getAverageScore tests
 
   @Test
