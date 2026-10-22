@@ -72,6 +72,41 @@ public class MapGameStatsCalculatorTest {
     assertThrows(NoSuchElementException.class, act);
   }
 
+  @Test
+  public void testOnlyOnePersonForScoreCount()
+  {
+    // Arrange
+    String scoreData = "Bob 19\n";
+    GameStatsCalculator calculator = new MapGameStatsCalculator(new Scanner(scoreData));
+
+    // Act
+    int actual = calculator.gameCount("Bob");
+
+    // Assert
+    assertEquals(1, actual);
+  }
+
+  @Test
+  public void negativeScoreAndSeeIfGameCount()
+  {
+    // Arrange
+    String scoreData = "Bob 19\n"
+        + "Baya 30\n"
+        + "Xinting -30\n"
+        + "Nupur -40\n"
+        + "Baya -20\n"
+        + "Nupur -20\n"
+        + "Baya 60\n"
+        + "Nupur 30\n";;
+    GameStatsCalculator calculator = new MapGameStatsCalculator(new Scanner(scoreData));
+
+    // Act
+    int actual = calculator.gameCount("Nupur");
+
+    // Assert
+    assertEquals(3, actual);
+  }
+
   // highScore tests
 
   @Test
