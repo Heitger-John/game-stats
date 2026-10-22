@@ -169,6 +169,21 @@ public class MapGameStatsCalculatorTest {
     assertThrows(NoSuchElementException.class, act);
   }
 
+  @Test
+  public void testHighScoreCheckOfSinglePerson()
+  {
+    // Arrange
+    String scoreData = "Bob 10\n";
+    GameStatsCalculator calculator = new MapGameStatsCalculator(new Scanner(scoreData));
+
+    // Act
+    int actual = calculator.highScore("Bob");
+
+    // Assert
+    assertEquals(10, actual);
+
+  }
+
   // highestScorer tests
 
   @Test
