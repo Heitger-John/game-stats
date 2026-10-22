@@ -3,6 +3,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class MapGameStatsCalculator implements GameStatsCalculator {
 
@@ -20,6 +21,7 @@ public class MapGameStatsCalculator implements GameStatsCalculator {
    */
   private Map<String, Integer> gameCounts;
   private Map<String, Integer> highScores;
+  private Map<String, List<Integer>> totalScores;
 
   // For some waves you will need to add more private instance variables here!
 
@@ -49,6 +51,15 @@ public class MapGameStatsCalculator implements GameStatsCalculator {
       else if (highScores.get(name) < score)
       {
         highScores.put(name, score);
+      }
+      if(!totalScores.containsKey(name))
+      {
+        totalScores.put(name, new ArrayList<>());
+        totalScores.get(name).add(score);
+      }
+      else
+      {
+        totalScores.get(name).add(score);
       }
     }
   }
@@ -134,6 +145,7 @@ public class MapGameStatsCalculator implements GameStatsCalculator {
    */
   @Override
   public double getAverageScore(String person) {
+
     // TODO: remove this exception once you have implemented your method!
     throw new UnsupportedOperationException("Unimplemented method 'getAverageScore'");
 
