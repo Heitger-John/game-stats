@@ -19,6 +19,7 @@ public class MapGameStatsCalculator implements GameStatsCalculator {
    * }
    */
   private Map<String, Integer> gameCounts;
+  private Map<String, Integer> highScores;
 
   // For some waves you will need to add more private instance variables here!
 
@@ -26,19 +27,28 @@ public class MapGameStatsCalculator implements GameStatsCalculator {
 
   public MapGameStatsCalculator(Scanner scoreInput) {
     gameCounts = new HashMap<>();
+    highScores = new HashMap<>();
 
     while(scoreInput.hasNext()) {
       String name = scoreInput.next();
       int score = scoreInput.nextInt();
 
       // TODO: add logic here to use the name and score to fill your map(s)!
-      if(!gameCounts.containsKey(name))
+      if (!gameCounts.containsKey(name))
       {
         gameCounts.put(name, 1);
       }
       else
       {
         gameCounts.put(name, gameCounts.get(name) + 1);
+      }
+      if (!highScores.containsKey(name))
+      {
+        highScores.put(name, score);
+      }
+      else if (highScores.get(name) < score)
+      {
+        highScores.put(name, score);
       }
     }
   }
