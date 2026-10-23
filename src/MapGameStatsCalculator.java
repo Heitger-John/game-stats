@@ -111,6 +111,7 @@ public class MapGameStatsCalculator implements GameStatsCalculator {
   @Override
   public String highestScorer() {
 
+    checkScoreData();
     int topScore = 0;
     String topPerson = "";
     for (String person : highScores.keySet())
@@ -133,7 +134,6 @@ public class MapGameStatsCalculator implements GameStatsCalculator {
     // throw new UnsupportedOperationException("Unimplemented method 'highestScorer'");
 
     // Uncomment this and have it as your first line once you remove the UnsupportedOperationException
-    checkScoreData();
     return topPerson;
   }
 

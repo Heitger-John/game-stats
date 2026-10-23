@@ -389,6 +389,26 @@ public class MapGameStatsCalculatorTest {
 
   }
 
+  @Test public void highestAverageScoreOfWithNegativeNumber()
+  {
+    // Arrange
+    String scoreData = "Bob 19\n"
+        + "Baya 30\n"
+        + "Xinting -30\n"
+        + "Nupur -40\n"
+        + "Baya -20\n"
+        + "Nupur -20\n"
+        + "Baya 60\n"
+        + "Nupur 30\n";
+    GameStatsCalculator calculator = new MapGameStatsCalculator(new Scanner(scoreData));
+
+    // Act 
+    String actual = calculator.highestAverageScorer();
+
+    // Assert
+    assertEquals("Baya", actual);
+  }
+
   // sortedScores tests
 
   @Test
