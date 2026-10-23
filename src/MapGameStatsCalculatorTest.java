@@ -374,6 +374,21 @@ public class MapGameStatsCalculatorTest {
     assertThrows(NoSuchElementException.class, act);
   }
 
+  @Test
+  public void highestAverageScorerWithOnePerson()
+  {
+    // Arrange
+    String scoreData = "Nupur 10\n";
+  GameStatsCalculator calculator = new MapGameStatsCalculator(new Scanner(scoreData));
+
+    // Act
+    String actual = calculator.highestAverageScorer();
+
+    //Assert
+    assertEquals("Nupur", actual);
+
+  }
+
   // sortedScores tests
 
   @Test
